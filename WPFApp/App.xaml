@@ -1,0 +1,16 @@
+﻿<Application x:Class="WPFApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPFApp"
+             xmlns:viewModels="clr-namespace:WPFApp.ViewModels"
+             xmlns:views="clr-namespace:WPFApp.Views"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <DataTemplate DataType="{x:Type viewModels:HomePageViewModel}">
+            <views:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:DiscsPageViewModel}">
+            <views:DiscsViewModel />
+        </DataTemplate>
+    </Application.Resources>
+</Application>
