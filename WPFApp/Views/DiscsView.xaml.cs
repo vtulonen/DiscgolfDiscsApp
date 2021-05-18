@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WPFApp.Views
 {
     /// <summary>
-    /// Interaction logic for DiscsViewModel.xaml
+    /// Interaction logic for DiscsView.xaml
     /// </summary>
-    public partial class DiscsViewModel : UserControl
+    public partial class DiscsView : UserControl
     {
-        public DiscsViewModel()
+        public DiscsView()
         {
             InitializeComponent();
         }

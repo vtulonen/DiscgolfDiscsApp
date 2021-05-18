@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPFApp.ViewModels
 {
-    class HomePageViewModel
+    class HomeViewModel
     {
     }
 }

@@ -15,8 +15,8 @@ namespace WPFApp.ViewModels
 
 
 
-        public HomePageViewModel HomeVM { get; set; }
-        public DiscsPageViewModel DiscsVM { get; set; }
+        public HomeViewModel HomeVM { get; set; }
+        public DiscsViewModel DiscsVM { get; set; }
 
         private object _currentView;
 
@@ -30,8 +30,8 @@ namespace WPFApp.ViewModels
 
         public MainViewModel()
         {
-            HomeVM = new HomePageViewModel();
-            DiscsVM = new DiscsPageViewModel();
+            HomeVM = new HomeViewModel();
+            DiscsVM = new DiscsViewModel();
             CurrentView = HomeVM;
 
             HomeViewCommand = new RelayCommand(x => CurrentView = HomeVM);

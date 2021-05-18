@@ -6,11 +6,17 @@
              xmlns:views="clr-namespace:WPFApp.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <DataTemplate DataType="{x:Type viewModels:HomePageViewModel}">
+        <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
             <views:HomeView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:DiscsPageViewModel}">
-            <views:DiscsViewModel />
+        <DataTemplate DataType="{x:Type viewModels:DiscsViewModel}">
+            <views:DiscsView />
         </DataTemplate>
+        <Style x:Key="GridHeaderStyle" TargetType="GridViewColumnHeader">
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+        </Style>
+
+        
     </Application.Resources>
 </Application>
