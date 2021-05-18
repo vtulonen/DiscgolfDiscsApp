@@ -5,23 +5,35 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using WPFApp.Core;
 using WPFApp.Models;
 
 namespace WPFApp.ViewModels
 {
-    class DiscsViewModel : INotifyPropertyChanged
+    class DiscsViewModel
     {
+        // Collections to hold disc data bound to listViews
         private ObservableCollection<DiscModel> _discs = new ObservableCollection<DiscModel>();
-        private DiscModel _selectedDisc;
-        public event PropertyChangedEventHandler PropertyChanged;
+        private ObservableCollection<DiscModel> _bagDiscs = new ObservableCollection<DiscModel>();
+
+        // Command properties
+        public RelayCommand AddToBagCommand { get; set; }       // Bound to Add button
+        public RelayCommand RemoveFromBagCommand { get; set; }  // Bound to Remove button
 
         public DiscsViewModel()
         {
+
             Discs.Add(new DiscModel { Id = 0, Name = "Test", Brand = "Innova", Speed = 10, Glide = 5, Turn = 1, Fade = 2, });
             Discs.Add(new DiscModel { Id = 0, Name = "Bester", Brand = "Innova", Speed = 9, Glide = 5, Turn = -2, Fade = 1 });
             Discs.Add(new DiscModel { Id = 0, Name = "Jestemn", Brand = "Innova", Speed = 5, Glide = 5, Turn = 0, Fade = 0 });
             Discs.Add(new DiscModel { Id = 0, Name = "Geste", Brand = "Innova", Speed = 2, Glide = 2, Turn = 0, Fade = 1 });
-        }
+
+            // Setting execute actions for the commands
+            // selectedItem of type object gets passed from view through binding
+            AddToBagCommand = new RelayCommand(selectedItem => ExecAdd(selectedItem)); // Action separated to its own method       
+            RemoveFromBagCommand = new RelayCommand(selectedItem => ExecRemove(selectedItem));
+            }
 
         public ObservableCollection<DiscModel> Discs
         {
@@ -29,23 +41,33 @@ namespace WPFApp.ViewModels
             set { Discs = value; }
         }
 
-        private void RaisePropertyChanged(string propertyName)
+        public ObservableCollection<DiscModel> BagDiscs
         {
-            if (PropertyChanged != null)
+            get { return _bagDiscs; }
+            set { Discs = value; }
+        }
+
+        private void ExecAdd(object selectedItem)
+        {
+            if (selectedItem != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                BagDiscs.Add((DiscModel)selectedItem); // Cast object to DiscModel
+            }
+            else
+            {
+                MessageBox.Show("Pelase select a disc from the all discs to add to your bag.");
             }
         }
 
-        public DiscModel MyProperty
+        private void ExecRemove(object selectedItem)
         {
-            get { return _selectedDisc; }
-            set
+            if (selectedItem != null)
             {
-                _selectedDisc = value;
-                RaisePropertyChanged("Names");
-
-
+                BagDiscs.Remove((DiscModel)selectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Please select a disc from your bag to remove.");
             }
         }
     }

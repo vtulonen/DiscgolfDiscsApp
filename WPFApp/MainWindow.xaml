@@ -21,6 +21,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
+        <!--Col 0 navigation -->
         <TextBlock Text="DiscsApp" 
                    VerticalAlignment="Center"
                    FontSize="28"
@@ -35,6 +36,7 @@
                          Command="{Binding DiscsViewCommand}"/>
         </StackPanel>
 
+        <!--Col 1 Different views displayed here -->
         <ContentControl Grid.Row="0"
                         Grid.RowSpan="2"
                         Grid.Column="1"

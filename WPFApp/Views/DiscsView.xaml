@@ -9,6 +9,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="50" />
+
             <ColumnDefinition Width="*" MaxWidth="400"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -16,7 +18,9 @@
             <RowDefinition MaxHeight="450"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Discs" Grid.Row="0" VerticalAlignment="Center" FontSize="24" />
+
+        <!-- Col 0 Left - all discs section -->
+        <TextBlock Text="All Discs" Grid.Row="0" VerticalAlignment="Center" FontSize="24" />
         <ListView x:Name="LVDiscs" Grid.Row="1" 
                   ItemsSource="{Binding Discs}" 
                   HorizontalAlignment="Left"
@@ -32,13 +36,47 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+
+        <!-- Col 2 Right - in the bag section -->
         <TextBlock Text="Your Bag" 
-                   Grid.Row="0" Grid.Column="1" 
+                   Grid.Row="0" Grid.Column="2" 
                    VerticalAlignment="Center"
                    FontSize="24"
                    Margin="10,0,0,0"/>
         <ListView x:Name="LVBag" 
-                  Grid.Row="1" Grid.Column="1" 
-                  Margin="10,0,0,0"/>
+                  ItemsSource="{Binding BagDiscs}"
+                  Grid.Row="1" Grid.Column="2" 
+                  Margin="10,0,0,0">
+            <ListView.View>
+                <GridView x:Name="GVBagDiscData" AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource GridHeaderStyle}">
+                    <GridViewColumn Header="Name" Width="125" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Speed" Width="50" DisplayMemberBinding="{Binding Speed}" />
+                    <GridViewColumn Header="Glide" Width="50" DisplayMemberBinding="{Binding Glide}" />
+                    <GridViewColumn Header="Turn" Width="50" DisplayMemberBinding="{Binding Turn}" />
+                    <GridViewColumn Header="Fade" Width="50" DisplayMemberBinding="{Binding Fade}" />
+                    <GridViewColumn Header="Brand" Width="75" DisplayMemberBinding="{Binding Brand}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <!-- Col 1 Middle section for buttons -->
+        <StackPanel Grid.Column="1" 
+                    Grid.Row="1" 
+                    Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    >
+            <Button Command="{Binding AddToBagCommand}" 
+                    CommandParameter="{Binding ElementName=LVDiscs, Path=SelectedItem}"
+                    Content="Add" 
+                    Height="40"
+                    Margin="0,0,0,10"/>
+            <Button Command="{Binding RemoveFromBagCommand}" 
+                    CommandParameter="{Binding ElementName=LVBag, Path=SelectedItem}"
+                    Content="Remove" 
+                    Height="40"/>
+        </StackPanel>
+
     </Grid>
 </UserControl>

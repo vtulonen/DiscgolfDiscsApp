@@ -13,8 +13,6 @@ namespace WPFApp.ViewModels
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand DiscsViewCommand { get; set; }
 
-
-
         public HomeViewModel HomeVM { get; set; }
         public DiscsViewModel DiscsVM { get; set; }
 
