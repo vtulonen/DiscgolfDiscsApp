@@ -12,9 +12,13 @@ namespace WPFApp.ViewModels
 
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand DiscsViewCommand { get; set; }
+        public RelayCommand LoginViewCommand { get; set; }
+
 
         public HomeViewModel HomeVM { get; set; }
         public DiscsViewModel DiscsVM { get; set; }
+        public LoginViewModel LoginVM { get; set; }
+
 
         private object _currentView;
 
@@ -30,10 +34,13 @@ namespace WPFApp.ViewModels
         {
             HomeVM = new HomeViewModel();
             DiscsVM = new DiscsViewModel();
-            CurrentView = HomeVM;
+            LoginVM = new LoginViewModel();
+            CurrentView = LoginVM;
 
             HomeViewCommand = new RelayCommand(x => CurrentView = HomeVM);
             DiscsViewCommand = new RelayCommand(x => CurrentView = DiscsVM);
+            LoginViewCommand = new RelayCommand(x => CurrentView = LoginVM);
+
         }
 
     }

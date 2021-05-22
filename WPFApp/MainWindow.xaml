@@ -34,6 +34,9 @@
             <RadioButton Content="Discs"
                          FontSize="22"
                          Command="{Binding DiscsViewCommand}"/>
+            <RadioButton Content="Login"
+                         FontSize="22"
+                         Command="{Binding LoginViewCommand}"/>
         </StackPanel>
 
         <!--Col 1 Different views displayed here -->

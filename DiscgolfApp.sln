@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFApp", "WPFApp\WPFApp.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscgolfLib", "DiscgolfLib\DiscgolfLib.csproj", "{53F72F6B-0506-4567-BE4B-C173FBAD6058}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscgolfAppTests", "DiscgolfAppTests\DiscgolfAppTests.csproj", "{8B29A954-D904-4305-9ED5-79121D67FE6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{53F72F6B-0506-4567-BE4B-C173FBAD6058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53F72F6B-0506-4567-BE4B-C173FBAD6058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53F72F6B-0506-4567-BE4B-C173FBAD6058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B29A954-D904-4305-9ED5-79121D67FE6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B29A954-D904-4305-9ED5-79121D67FE6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B29A954-D904-4305-9ED5-79121D67FE6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B29A954-D904-4305-9ED5-79121D67FE6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

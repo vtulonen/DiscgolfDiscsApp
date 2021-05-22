@@ -12,6 +12,9 @@
         <DataTemplate DataType="{x:Type viewModels:DiscsViewModel}">
             <views:DiscsView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
+            <views:LoginView />
+        </DataTemplate>
         <Style x:Key="GridHeaderStyle" TargetType="GridViewColumnHeader">
             <Setter Property="IsEnabled" Value="False"/>
             <Setter Property="HorizontalContentAlignment" Value="Left" />
