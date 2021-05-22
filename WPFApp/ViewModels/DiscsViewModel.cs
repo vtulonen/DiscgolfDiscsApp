@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,7 +14,7 @@ using WPFApp.Core;
 
 namespace WPFApp.ViewModels
 {
-    class DiscsViewModel : INotifyPropertyChanged
+    public class DiscsViewModel : INotifyPropertyChanged
     {
         // Collections to hold disc data bound to listViews
         private ObservableCollection<DiscModel> _discs = new ObservableCollection<DiscModel>();
@@ -91,9 +92,25 @@ namespace WPFApp.ViewModels
         // Load discs from API and populate Discs collection
         private async void ExecLoadDiscs()
         {
-            var discs = await DiscProcessor.LoadAllDiscs();
+            try
+            {
+                var discs = await DiscProcessor.LoadAllDiscs();
+                var sortedDiscsSpeed = discs.OrderByDescending(x => x.Speed);
+                Discs = ToObservableCollection(sortedDiscsSpeed);
+            }
+            catch(HttpRequestException) // if api does not respond, populate with dummy data
+            {
+                Discs.Add(new DiscModel { Id = 0, Name = "Test", Brand = "Innova", Speed = 10, Glide = 5, Turn = 1, Fade = 2, });
+                Discs.Add(new DiscModel { Id = 0, Name = "Bester", Brand = "Innova", Speed = 9, Glide = 5, Turn = -2, Fade = 1 });
+                Discs.Add(new DiscModel { Id = 0, Name = "Jestemn", Brand = "Innova", Speed = 5, Glide = 5, Turn = 0, Fade = 0 });
+                Discs.Add(new DiscModel { Id = 0, Name = "Geste", Brand = "Innova", Speed = 2, Glide = 2, Turn = 0, Fade = 1 });
+            }
+        }
 
-            Discs = discs;
+
+        public ObservableCollection<T> ToObservableCollection<T>(IEnumerable<T> enumeration)
+        {
+            return new ObservableCollection<T>(enumeration);
         }
     }
 }
